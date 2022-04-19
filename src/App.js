@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header/Header'
+import InputForm from './components/input-form/InputForm';
+import Tasks from './components/tasks/Tasks';
+import Completed from './components/completedTasks/CompletedTasks';
+import { useState, useEffect } from "react";
 
-function App() {
+function App(props) {
+  const [inputItem, setInputItem] = useState('')
+  const [completedItem, setCompletedItem] = useState([])
+  
+  const addToCompleted = (items) => {
+    const completedItems = [items, ...completedItem]
+    setCompletedItem(completedItems)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <InputForm />
+      {/* <Tasks /> */}
+      {/* <Completed /> */}
     </div>
   );
 }

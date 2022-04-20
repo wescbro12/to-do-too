@@ -10,7 +10,8 @@ export default function Tasks({ inputItems, addToCompleted }) {
                 {
                     Array.isArray(inputItems) && inputItems.map((item, idx) => {
                         return (
-                            <TaskItems key={idx} content={item.entry} addToCompleted={addToCompleted} />
+                            <TaskItems key={item.key} content={item.entry} addToCompleted={addToCompleted}
+                                text={ "Completed"}/>
                         )
                     })
                 }

@@ -1,4 +1,5 @@
 import React from "react";
+import TaskItems from "../taskItems/TaskItems";
 
 export default function Completed(props) {
 

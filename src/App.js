@@ -11,7 +11,19 @@ function App(props) {
 
   const addToCompleted = (items) => {
     const newCompletedItems = [items, ...completedItems]
-    setCompletedItems(newCompletedItems)
+        setCompletedItems(newCompletedItems)
+    
+
+  }
+
+  const removeFromCompleted = (items) => {
+    items.completed = false;
+    const newCompletedItems = [...completedItems];
+    const itemIndex = newCompletedItems.findIndex((current) => items.key === current.key);
+    newCompletedItems.splice(itemIndex, 1);
+    setCompletedItems(newCompletedItems);
+    const newInputItems = [items, ...inputItems]
+    setCompletedItems(newInputItems);
   }
 
   const handleSubmit = (item) => {

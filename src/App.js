@@ -6,19 +6,23 @@ import Completed from './components/completedTasks/CompletedTasks';
 import { useState, useEffect } from "react";
 
 function App(props) {
-  const [inputItem, setInputItem] = useState('')
-  const [completedItem, setCompletedItem] = useState([])
-  
+  const [inputItems, setInputItems] = useState([])
+  const [completedItems, setCompletedItems] = useState([])
+
   const addToCompleted = (items) => {
-    const completedItems = [items, ...completedItem]
-    setCompletedItem(completedItems)
+    const newCompletedItems = [items, ...completedItems]
+    setCompletedItems(newCompletedItems)
+  }
+
+  const handleSubmit = (item) => {
+    setInputItems([{ entry: item, status:"To-Do" }, ...inputItems])
   }
   return (
     <div className="App">
       <Header />
-      <InputForm />
-      {/* <Tasks /> */}
-      {/* <Completed /> */}
+      <InputForm handleSubmit={handleSubmit} />
+      <Tasks inputItems={inputItems} addToCompleted={addToCompleted} />
+      <Completed completedItems={completedItems} />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 const express = require('express');
-const { findByIdAndUpdate } = require('../models/task');
 const router = express.Router();
 const Task = require('../models/task')
 
@@ -34,9 +33,10 @@ router.get('/select', (req, res) => {
 
 //Create New Task
 router.post('/', (req, res) => {
-    const { body } = reqTask.create(body, (err, createdTask) => {
+    const { body } = req
+    Task.create(body, (err, createdTask) => {
         if (!err) {
-            res.status(200).json({message: "Texaes sized 10-4", createdTask})
+            res.status(200).json({ message: "Texas sized 10-4", createdTask })
         } else {
             res.status(400).json(err)
         }
@@ -58,11 +58,12 @@ router.put('/:id', (req, res) => {
 //Delete Task
 router.post('/:id', (req, res) => {
     Task.findByIdAndDelete(req.params.id, (err) => {
-        if(!err) {
-            res.status(200).json({message: "Job Done"})
+        if (!err) {
+            res.status(200).json({ message: "Job Done" })
         } else {
             res.status(400).json(err)
         }
     })
 })
 
+module.exports = router;

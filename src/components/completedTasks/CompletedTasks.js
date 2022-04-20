@@ -7,10 +7,11 @@ export default function Completed(props) {
             <h3>Completed Tasks:</h3>
             <ul>
                 {
-                    props.compltedItem.map((item) => {
+                    props.completedItems.map((item, idx) => {
                         return (
                             <li>
-                                {item} <button>Remove</button>
+                                {item.key}
+                                {item}<button>Remove</button>
                             </li>
                         )
                     })
